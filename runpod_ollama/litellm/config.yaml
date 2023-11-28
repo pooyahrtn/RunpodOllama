@@ -1,0 +1,6 @@
+model_list:
+  - model_name: ollama/mistral
+    litellm_params:
+      model: ollama/mistral
+      api_base: http://127.0.0.1:5000/<insert your pod-id here>
+      api_key: null
