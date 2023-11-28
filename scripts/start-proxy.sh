@@ -21,7 +21,7 @@ trap cleanup EXIT
 poetry run run_proxy &
 pid1=$!
 
-litellm --config $PWD/../job_research/litellm/config.yaml &
+litellm --config $PWD/../runpod_ollama/litellm/config.yaml &
 pid2=$!
 
 # Keep the script running
