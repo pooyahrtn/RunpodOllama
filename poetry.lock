@@ -316,17 +316,6 @@ files = [
 ]
 
 [[package]]
-name = "diskcache"
-version = "5.6.3"
-description = "Disk Cache -- Disk and file backed persistent cache."
-optional = false
-python-versions = ">=3"
-files = [
-    {file = "diskcache-5.6.3-py3-none-any.whl", hash = "sha256:5e31b2d5fbad117cc363ebaf6b689474db18a1f6438bc82358b024abd4c2ca19"},
-    {file = "diskcache-5.6.3.tar.gz", hash = "sha256:2c3a3fa2743d8535d832ec61c2054a1641f41775aa7c556758a109941e33e4fc"},
-]
-
-[[package]]
 name = "distro"
 version = "1.8.0"
 description = "Distro - an OS platform information API"
@@ -336,27 +325,6 @@ files = [
     {file = "distro-1.8.0-py3-none-any.whl", hash = "sha256:99522ca3e365cac527b44bde033f64c6945d90eb9f769703caaec52b09bbd3ff"},
     {file = "distro-1.8.0.tar.gz", hash = "sha256:02e111d1dc6a50abb8eed6bf31c3e48ed8b0830d1ea2a1b78c61765c2513fdd8"},
 ]
-
-[[package]]
-name = "docker"
-version = "6.1.3"
-description = "A Python library for the Docker Engine API."
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "docker-6.1.3-py3-none-any.whl", hash = "sha256:aecd2277b8bf8e506e484f6ab7aec39abe0038e29fa4a6d3ba86c3fe01844ed9"},
-    {file = "docker-6.1.3.tar.gz", hash = "sha256:aa6d17830045ba5ef0168d5eaa34d37beeb113948c413affe1d5991fc11f9a20"},
-]
-
-[package.dependencies]
-packaging = ">=14.0"
-pywin32 = {version = ">=304", markers = "sys_platform == \"win32\""}
-requests = ">=2.26.0"
-urllib3 = ">=1.26.0"
-websocket-client = ">=0.32.0"
-
-[package.extras]
-ssh = ["paramiko (>=2.4.3)"]
 
 [[package]]
 name = "filelock"
@@ -373,43 +341,6 @@ files = [
 docs = ["furo (>=2023.9.10)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.24)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.3.2)", "diff-cover (>=8)", "pytest (>=7.4.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)", "pytest-timeout (>=2.2)"]
 typing = ["typing-extensions (>=4.8)"]
-
-[[package]]
-name = "flaml"
-version = "2.1.1"
-description = "A fast library for automated machine learning and tuning"
-optional = false
-python-versions = ">=3.6"
-files = [
-    {file = "FLAML-2.1.1-py3-none-any.whl", hash = "sha256:ba34f1a06f3cbc6bb23a2ea4830a264375f6bba497f402122a73e42647a15535"},
-    {file = "FLAML-2.1.1.tar.gz", hash = "sha256:53e94aacc996da80fe779bc6833d3b25c80c77fe11667d0912798e49293282eb"},
-]
-
-[package.dependencies]
-NumPy = ">=1.17.0rc1"
-
-[package.extras]
-autogen = ["diskcache", "openai (==0.27.8)", "termcolor"]
-automl = ["lightgbm (>=2.3.1)", "pandas (>=1.1.4)", "scikit-learn (>=0.24)", "scipy (>=1.4.1)", "xgboost (>=0.90)"]
-autozero = ["packaging", "pandas", "scikit-learn"]
-azureml = ["azureml-mlflow"]
-benchmark = ["catboost (>=0.26)", "pandas (==1.1.4)", "psutil (==5.8.0)", "xgboost (==1.3.3)"]
-blendsearch = ["optuna (==2.8.0)", "packaging"]
-catboost = ["catboost (>=0.26)"]
-forecast = ["hcrystalball (==0.1.10)", "holidays (<0.14)", "prophet (>=1.0.1)", "pytorch-forecasting (>=0.9.0)", "pytorch-lightning (==1.9.0)", "statsmodels (>=0.12.2)", "tensorboardX (==2.6)"]
-hf = ["datasets", "nltk", "rouge-score", "seqeval", "transformers[torch] (==4.26)"]
-mathchat = ["diskcache", "openai (==0.27.8)", "pydantic (==1.10.9)", "sympy", "termcolor", "wolframalpha"]
-nlp = ["datasets", "nltk", "rouge-score", "seqeval", "transformers[torch] (==4.26)"]
-nni = ["nni"]
-notebook = ["jupyter"]
-openai = ["diskcache", "openai (==0.27.8)"]
-ray = ["ray[tune] (>=1.13,<2.0)"]
-retrievechat = ["chromadb", "diskcache", "openai (==0.27.8)", "sentence-transformers", "termcolor", "tiktoken"]
-spark = ["joblib (<1.3.0)", "joblibspark (>=0.5.0)", "pyspark (>=3.2.0)"]
-synapse = ["joblib (<1.3.0)", "joblibspark (>=0.5.0)", "optuna (==2.8.0)", "pyspark (>=3.2.0)"]
-test = ["catboost (>=0.26,<1.2)", "coverage (>=5.3)", "dataclasses", "datasets", "hcrystalball (==0.1.10)", "ipykernel", "joblib (<1.3.0)", "joblibspark (>=0.5.0)", "lightgbm (>=2.3.1)", "mlflow", "nbconvert", "nbformat", "nltk", "openml", "optuna (==2.8.0)", "packaging", "pandas (>=1.1.4)", "pre-commit", "psutil (==5.8.0)", "pydantic (==1.10.9)", "pyspark (>=3.2.0)", "pytest (>=6.1.1)", "pytorch-forecasting (>=0.9.0,<=0.10.1)", "pytorch-lightning (<1.9.1)", "requests (<2.29.0)", "rgf-python", "rouge-score", "scikit-learn (>=0.24)", "scipy (>=1.4.1)", "seqeval", "statsmodels (>=0.12.2)", "sympy", "tensorboardX (==2.6)", "thop", "torch", "torchvision", "transformers[torch] (==4.26)", "wolframalpha", "xgboost (>=0.90)"]
-ts-forecast = ["hcrystalball (==0.1.10)", "holidays (<0.14)", "prophet (>=1.0.1)", "statsmodels (>=0.12.2)"]
-vw = ["scikit-learn", "vowpalwabbit (>=8.10.0,<9.0.0)"]
 
 [[package]]
 name = "flask"
@@ -861,51 +792,6 @@ files = [
 ]
 
 [[package]]
-name = "numpy"
-version = "1.26.2"
-description = "Fundamental package for array computing in Python"
-optional = false
-python-versions = ">=3.9"
-files = [
-    {file = "numpy-1.26.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:3703fc9258a4a122d17043e57b35e5ef1c5a5837c3db8be396c82e04c1cf9b0f"},
-    {file = "numpy-1.26.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:cc392fdcbd21d4be6ae1bb4475a03ce3b025cd49a9be5345d76d7585aea69440"},
-    {file = "numpy-1.26.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:36340109af8da8805d8851ef1d74761b3b88e81a9bd80b290bbfed61bd2b4f75"},
-    {file = "numpy-1.26.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:bcc008217145b3d77abd3e4d5ef586e3bdfba8fe17940769f8aa09b99e856c00"},
-    {file = "numpy-1.26.2-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:3ced40d4e9e18242f70dd02d739e44698df3dcb010d31f495ff00a31ef6014fe"},
-    {file = "numpy-1.26.2-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:b272d4cecc32c9e19911891446b72e986157e6a1809b7b56518b4f3755267523"},
-    {file = "numpy-1.26.2-cp310-cp310-win32.whl", hash = "sha256:22f8fc02fdbc829e7a8c578dd8d2e15a9074b630d4da29cda483337e300e3ee9"},
-    {file = "numpy-1.26.2-cp310-cp310-win_amd64.whl", hash = "sha256:26c9d33f8e8b846d5a65dd068c14e04018d05533b348d9eaeef6c1bd787f9919"},
-    {file = "numpy-1.26.2-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:b96e7b9c624ef3ae2ae0e04fa9b460f6b9f17ad8b4bec6d7756510f1f6c0c841"},
-    {file = "numpy-1.26.2-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:aa18428111fb9a591d7a9cc1b48150097ba6a7e8299fb56bdf574df650e7d1f1"},
-    {file = "numpy-1.26.2-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:06fa1ed84aa60ea6ef9f91ba57b5ed963c3729534e6e54055fc151fad0423f0a"},
-    {file = "numpy-1.26.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:96ca5482c3dbdd051bcd1fce8034603d6ebfc125a7bd59f55b40d8f5d246832b"},
-    {file = "numpy-1.26.2-cp311-cp311-musllinux_1_1_aarch64.whl", hash = "sha256:854ab91a2906ef29dc3925a064fcd365c7b4da743f84b123002f6139bcb3f8a7"},
-    {file = "numpy-1.26.2-cp311-cp311-musllinux_1_1_x86_64.whl", hash = "sha256:f43740ab089277d403aa07567be138fc2a89d4d9892d113b76153e0e412409f8"},
-    {file = "numpy-1.26.2-cp311-cp311-win32.whl", hash = "sha256:a2bbc29fcb1771cd7b7425f98b05307776a6baf43035d3b80c4b0f29e9545186"},
-    {file = "numpy-1.26.2-cp311-cp311-win_amd64.whl", hash = "sha256:2b3fca8a5b00184828d12b073af4d0fc5fdd94b1632c2477526f6bd7842d700d"},
-    {file = "numpy-1.26.2-cp312-cp312-macosx_10_9_x86_64.whl", hash = "sha256:a4cd6ed4a339c21f1d1b0fdf13426cb3b284555c27ac2f156dfdaaa7e16bfab0"},
-    {file = "numpy-1.26.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:5d5244aabd6ed7f312268b9247be47343a654ebea52a60f002dc70c769048e75"},
-    {file = "numpy-1.26.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:6a3cdb4d9c70e6b8c0814239ead47da00934666f668426fc6e94cce869e13fd7"},
-    {file = "numpy-1.26.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:aa317b2325f7aa0a9471663e6093c210cb2ae9c0ad824732b307d2c51983d5b6"},
-    {file = "numpy-1.26.2-cp312-cp312-musllinux_1_1_aarch64.whl", hash = "sha256:174a8880739c16c925799c018f3f55b8130c1f7c8e75ab0a6fa9d41cab092fd6"},
-    {file = "numpy-1.26.2-cp312-cp312-musllinux_1_1_x86_64.whl", hash = "sha256:f79b231bf5c16b1f39c7f4875e1ded36abee1591e98742b05d8a0fb55d8a3eec"},
-    {file = "numpy-1.26.2-cp312-cp312-win32.whl", hash = "sha256:4a06263321dfd3598cacb252f51e521a8cb4b6df471bb12a7ee5cbab20ea9167"},
-    {file = "numpy-1.26.2-cp312-cp312-win_amd64.whl", hash = "sha256:b04f5dc6b3efdaab541f7857351aac359e6ae3c126e2edb376929bd3b7f92d7e"},
-    {file = "numpy-1.26.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:4eb8df4bf8d3d90d091e0146f6c28492b0be84da3e409ebef54349f71ed271ef"},
-    {file = "numpy-1.26.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:1a13860fdcd95de7cf58bd6f8bc5a5ef81c0b0625eb2c9a783948847abbef2c2"},
-    {file = "numpy-1.26.2-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:64308ebc366a8ed63fd0bf426b6a9468060962f1a4339ab1074c228fa6ade8e3"},
-    {file = "numpy-1.26.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:baf8aab04a2c0e859da118f0b38617e5ee65d75b83795055fb66c0d5e9e9b818"},
-    {file = "numpy-1.26.2-cp39-cp39-musllinux_1_1_aarch64.whl", hash = "sha256:d73a3abcac238250091b11caef9ad12413dab01669511779bc9b29261dd50210"},
-    {file = "numpy-1.26.2-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:b361d369fc7e5e1714cf827b731ca32bff8d411212fccd29ad98ad622449cc36"},
-    {file = "numpy-1.26.2-cp39-cp39-win32.whl", hash = "sha256:bd3f0091e845164a20bd5a326860c840fe2af79fa12e0469a12768a3ec578d80"},
-    {file = "numpy-1.26.2-cp39-cp39-win_amd64.whl", hash = "sha256:2beef57fb031dcc0dc8fa4fe297a742027b954949cabb52a2a376c144e5e6060"},
-    {file = "numpy-1.26.2-pp39-pypy39_pp73-macosx_10_9_x86_64.whl", hash = "sha256:1cc3d5029a30fb5f06704ad6b23b35e11309491c999838c31f124fee32107c79"},
-    {file = "numpy-1.26.2-pp39-pypy39_pp73-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:94cc3c222bb9fb5a12e334d0479b97bb2df446fbe622b470928f5284ffca3f8d"},
-    {file = "numpy-1.26.2-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:fe6b44fb8fcdf7eda4ef4461b97b3f63c466b27ab151bec2366db8b197387841"},
-    {file = "numpy-1.26.2.tar.gz", hash = "sha256:f65738447676ab5777f11e6bbbdb8ce11b785e105f690bc45966574816b6d3ea"},
-]
-
-[[package]]
 name = "openai"
 version = "1.3.5"
 description = "The official Python library for the openai API"
@@ -937,34 +823,6 @@ files = [
     {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
     {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
 ]
-
-[[package]]
-name = "pyautogen"
-version = "0.2.0"
-description = "Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework"
-optional = false
-python-versions = ">=3.8, <3.12"
-files = [
-    {file = "pyautogen-0.2.0-py3-none-any.whl", hash = "sha256:d7bf4d239f85152e191026d8173f649e256c431cf31b93ca3629cd2f0c525a46"},
-    {file = "pyautogen-0.2.0.tar.gz", hash = "sha256:858f2d15eaa68f043f7b67b975a6d27f738c98ca4d7e0e96b400061c0ac3e692"},
-]
-
-[package.dependencies]
-diskcache = "*"
-flaml = "*"
-openai = ">=1.2,<2.0"
-python-dotenv = "*"
-termcolor = "*"
-tiktoken = "*"
-
-[package.extras]
-blendsearch = ["flaml[blendsearch]"]
-graphs = ["matplotlib (>=3.8.1,<3.9.0)", "networkx (>=3.2.1,<3.3.0)"]
-lmm = ["pillow", "replicate"]
-mathchat = ["pydantic (==1.10.9)", "sympy", "wolframalpha"]
-retrievechat = ["chromadb", "ipython", "pypdf", "sentence-transformers"]
-teachable = ["chromadb"]
-test = ["coverage (>=5.3)", "ipykernel", "nbconvert", "nbformat", "pre-commit", "pytest (>=6.1.1)", "pytest-asyncio"]
 
 [[package]]
 name = "pydantic"
@@ -1115,29 +973,6 @@ files = [
 
 [package.extras]
 cli = ["click (>=5.0)"]
-
-[[package]]
-name = "pywin32"
-version = "306"
-description = "Python for Window Extensions"
-optional = false
-python-versions = "*"
-files = [
-    {file = "pywin32-306-cp310-cp310-win32.whl", hash = "sha256:06d3420a5155ba65f0b72f2699b5bacf3109f36acbe8923765c22938a69dfc8d"},
-    {file = "pywin32-306-cp310-cp310-win_amd64.whl", hash = "sha256:84f4471dbca1887ea3803d8848a1616429ac94a4a8d05f4bc9c5dcfd42ca99c8"},
-    {file = "pywin32-306-cp311-cp311-win32.whl", hash = "sha256:e65028133d15b64d2ed8f06dd9fbc268352478d4f9289e69c190ecd6818b6407"},
-    {file = "pywin32-306-cp311-cp311-win_amd64.whl", hash = "sha256:a7639f51c184c0272e93f244eb24dafca9b1855707d94c192d4a0b4c01e1100e"},
-    {file = "pywin32-306-cp311-cp311-win_arm64.whl", hash = "sha256:70dba0c913d19f942a2db25217d9a1b726c278f483a919f1abfed79c9cf64d3a"},
-    {file = "pywin32-306-cp312-cp312-win32.whl", hash = "sha256:383229d515657f4e3ed1343da8be101000562bf514591ff383ae940cad65458b"},
-    {file = "pywin32-306-cp312-cp312-win_amd64.whl", hash = "sha256:37257794c1ad39ee9be652da0462dc2e394c8159dfd913a8a4e8eb6fd346da0e"},
-    {file = "pywin32-306-cp312-cp312-win_arm64.whl", hash = "sha256:5821ec52f6d321aa59e2db7e0a35b997de60c201943557d108af9d4ae1ec7040"},
-    {file = "pywin32-306-cp37-cp37m-win32.whl", hash = "sha256:1c73ea9a0d2283d889001998059f5eaaba3b6238f767c9cf2833b13e6a685f65"},
-    {file = "pywin32-306-cp37-cp37m-win_amd64.whl", hash = "sha256:72c5f621542d7bdd4fdb716227be0dd3f8565c11b280be6315b06ace35487d36"},
-    {file = "pywin32-306-cp38-cp38-win32.whl", hash = "sha256:e4c092e2589b5cf0d365849e73e02c391c1349958c5ac3e9d5ccb9a28e017b3a"},
-    {file = "pywin32-306-cp38-cp38-win_amd64.whl", hash = "sha256:e8ac1ae3601bee6ca9f7cb4b5363bf1c0badb935ef243c4733ff9a393b1690c0"},
-    {file = "pywin32-306-cp39-cp39-win32.whl", hash = "sha256:e25fd5b485b55ac9c057f67d94bc203f3f6595078d1fb3b458c9c28b7153a802"},
-    {file = "pywin32-306-cp39-cp39-win_amd64.whl", hash = "sha256:39b61c15272833b5c329a2989999dcae836b1eed650252ab1b7bfbe1d59f30f4"},
-]
 
 [[package]]
 name = "pyyaml"
@@ -1326,20 +1161,6 @@ files = [
     {file = "sniffio-1.3.0-py3-none-any.whl", hash = "sha256:eecefdce1e5bbfb7ad2eeaabf7c1eeb404d7757c379bd1f7e5cce9d8bf425384"},
     {file = "sniffio-1.3.0.tar.gz", hash = "sha256:e60305c5e5d314f5389259b7f22aaa33d8f7dee49763119234af3755c55b9101"},
 ]
-
-[[package]]
-name = "termcolor"
-version = "2.3.0"
-description = "ANSI color formatting for output in terminal"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "termcolor-2.3.0-py3-none-any.whl", hash = "sha256:3afb05607b89aed0ffe25202399ee0867ad4d3cb4180d98aaf8eefa6a5f7d475"},
-    {file = "termcolor-2.3.0.tar.gz", hash = "sha256:b5b08f68937f138fe92f6c089b99f1e2da0ae56c52b78bf7075fd95420fd9a5a"},
-]
-
-[package.extras]
-tests = ["pytest", "pytest-cov"]
 
 [[package]]
 name = "tiktoken"
@@ -1549,22 +1370,6 @@ socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
-name = "websocket-client"
-version = "1.6.4"
-description = "WebSocket client for Python with low level API options"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "websocket-client-1.6.4.tar.gz", hash = "sha256:b3324019b3c28572086c4a319f91d1dcd44e6e11cd340232978c684a7650d0df"},
-    {file = "websocket_client-1.6.4-py3-none-any.whl", hash = "sha256:084072e0a7f5f347ef2ac3d8698a5e0b4ffbfcab607628cadabc650fc9a83a24"},
-]
-
-[package.extras]
-docs = ["Sphinx (>=6.0)", "sphinx-rtd-theme (>=1.1.0)"]
-optional = ["python-socks", "wsaccel"]
-test = ["websockets"]
-
-[[package]]
 name = "werkzeug"
 version = "3.0.1"
 description = "The comprehensive WSGI web application library."
@@ -1701,5 +1506,5 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 
 [metadata]
 lock-version = "2.0"
-python-versions = ">=3.11,<3.12"
-content-hash = "404407d1ffb284e34c9b61bcb74b4596beabf8525f8953cdeb9c8a9c5680770e"
+python-versions = "^3.11"
+content-hash = "a7f754fcc43bac2a24116ffd2dbadf4a2670b2516d7d77e191d00c319951482c"
