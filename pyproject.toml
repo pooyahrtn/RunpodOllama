@@ -4,6 +4,11 @@ version = "0.0.1"
 description = ""
 authors = ["Pooya Haratian"]
 readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/pooyahrtn/RunpodOllama"
+repository = "https://github.com/pooyahrtn/RunpodOllama"
+documentation = "https://github.com/pooyahrtn/RunpodOllama"
+packages = [{ include = "runpod_ollama" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
