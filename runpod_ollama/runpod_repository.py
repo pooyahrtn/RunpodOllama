@@ -9,10 +9,10 @@ class RunpodRepository:
         self.pod_id = pod_id
         self.active_request_id: Optional[str] = None
 
-    def generate(self, input: Any) -> Mapping[str, Any]:
+    def call_endpoint(self, endpoint: str, input: Any) -> Mapping[str, Any]:
         headers = self._request_headers()
         input = {
-            "method_name": "generate",
+            "method_name": endpoint,
             "input": input,
         }
 

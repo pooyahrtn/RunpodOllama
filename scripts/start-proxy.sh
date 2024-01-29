@@ -18,7 +18,7 @@ cleanup() {
 # Register the cleanup function to be called on exit
 trap cleanup EXIT
 
-poetry run run_proxy &
+poetry run local_proxy &
 pid1=$!
 
 litellm --config $PWD/../runpod_ollama/litellm/config.yaml &

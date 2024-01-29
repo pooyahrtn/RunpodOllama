@@ -5,8 +5,13 @@ import sys
 
 
 class HandlerInput(TypedDict):
+    """The data for calling the Ollama service."""
+
     method_name: Literal["generate"]
+    """The url endpoint of the Ollama service to make a post request to."""
+
     input: Any
+    """The body of the post request to the Ollama service."""
 
 
 class HandlerJob(TypedDict):
@@ -30,6 +35,7 @@ def handler(job: HandlerJob):
     )
     response.encoding = "utf-8"
 
+    # TODO: handle errors
     return response.json()
 
 

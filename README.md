@@ -12,3 +12,11 @@ Check the blog [here](https://medium.com/@pooya.haratian/running-ollama-with-run
 4. From the scripts folder, run `start-proxy.sh`. This will:
    1. Create a Local proxy that forwards LiteLLMs request to Runpod.
    2. Runs LiteLLM proxy server
+
+# Examples
+
+To run the examples, first install the examples dependencies:
+
+```
+$ poetry install --all-extras
+```

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "runpod"
+name = "runpod-ollama"
 version = "0.0.1"
 description = ""
 authors = ["Pooya Haratian"]
@@ -8,17 +8,25 @@ license = "MIT"
 homepage = "https://github.com/pooyahrtn/RunpodOllama"
 repository = "https://github.com/pooyahrtn/RunpodOllama"
 documentation = "https://github.com/pooyahrtn/RunpodOllama"
-packages = [{ include = "runpod_ollama" }]
+
 
 [tool.poetry.dependencies]
 python = "^3.11"
 flask = "^3.0.0"
 requests = "^2.31.0"
 python-dotenv = "^1.0.0"
-litellm = "^1.7.7"
+litellm = { extras = ["proxy"], version = "^1.20.2" }
 types-requests = "^2.31.0.20240125"
 
+
+[tool.poetry.group.examples.dependencies]
+openai = "^1.10.0"
+langchain-community = "^0.0.16"
+langchain = "^0.1.4"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+local_proxy = 'runpod_ollama:run_local_proxy'
