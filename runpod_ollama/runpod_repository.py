@@ -35,6 +35,9 @@ class RunpodRepository:
 
         return out["output"]
 
+    def pull_model(self, model_name: str):
+        return self.call_endpoint("pull", {"name": model_name})
+
     def cancel_requests(self):
         if not self.active_request_id:
             return

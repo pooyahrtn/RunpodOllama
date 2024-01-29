@@ -8,14 +8,14 @@ The API mimicks Ollama's API, but adds a pod_id parameter to the route.
 from flask import Flask, request
 from runpod_ollama import ENVIRONMENT
 from runpod_ollama.runpod_repository import RunpodRepository
-import json
+
 
 app = Flask(__name__)
 
 
 @app.route("/<pod_id>/api/<endpoint>", methods=["POST"])
 def endpoint(pod_id: str, endpoint: str):
-    """Forwards"""
+    """Forwards a request to the Runpod Ollama service."""
     data = request.json
     runpod_repository = RunpodRepository(
         api_key=ENVIRONMENT.RUNPOD_API_TOKEN,
@@ -26,5 +26,5 @@ def endpoint(pod_id: str, endpoint: str):
     return response
 
 
-def run_local_proxy():
-    app.run(debug=True)
+def run_local_proxy(port: int = 5000):
+    app.run(debug=True, port=port)
