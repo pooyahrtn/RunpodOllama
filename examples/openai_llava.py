@@ -21,4 +21,6 @@ response = client.completions.create(
     prompt="why the sky is blue?",
 )
 
+# TODO: investigate why the "text" property of the choices are empty,
+# and the content is received in the message.
 print(response.choices[0].message["content"])
