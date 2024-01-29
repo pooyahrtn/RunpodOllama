@@ -23,4 +23,4 @@ response = client.completions.create(
 
 # TODO: investigate why the "text" property of the choices are empty,
 # and the content is received in the message.
-print(response.choices[0].message["content"])
+print(response.choices[0].message["content"])  # type: ignore
