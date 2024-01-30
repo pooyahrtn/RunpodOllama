@@ -63,7 +63,7 @@ print(response.choices[0].message["content"])
 
 ## How it works
 
-```mermaid
+````mermaid
 sequenceDiagram
     box Client
     participant Client (e.g. litellm)
@@ -78,23 +78,27 @@ sequenceDiagram
     Runpod->>Ollama: Forwards Ollama API call
     loop Check every second
         Local Proxy --> Runpod: Check request status
+
     end
     Ollama-->>Runpod: Ollama responds
     Runpod-->>Local Proxy: Forwards Ollama response
     Local Proxy-->>Client (e.g. litellm): Receives Ollama response
-```
+
+```-->
 
 ### 1. Ollama
 
 You can communicate with Ollama through the rest API. The API is documented [here](https://github.com/ollama/ollama/blob/main/docs/api.md)
 
-```
+````
+
 curl http://localhost:11434/api/generate -d '{
-  "model": "llama2",
-  "prompt": "Why is the sky blue?",
-  "stream": false
+"model": "llama2",
+"prompt": "Why is the sky blue?",
+"stream": false
 }'
-```
+
+````
 
 Responds:
 
@@ -112,7 +116,7 @@ Responds:
   "eval_count": 290,
   "eval_duration": 4709213000
 }
-```
+````
 
 ### 2. Runpod
 
@@ -157,3 +161,7 @@ $ poetry install --all-extras
 # Limitations
 
 - Currently stream option is not enabled
+- Error messages are not readable. In case you encountered error, make sure:
+  - The local proxy is running
+  - The model name you provided is right
+- The docker image should be updated. Some models are not working with this version of the Ollama.
