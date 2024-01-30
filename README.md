@@ -1,4 +1,31 @@
-# Running Ollama with Runpod Serverless and LangChain
+# Running Ollama with Runpod Serverless
+
+## How it works
+
+```mermaid
+sequenceDiagram
+    box Client
+    participant Client (e.g. litellm)
+    participant Local Proxy
+    end
+    box Server
+    participant Runpod
+    participant Ollama
+    end
+    Client (e.g. litellm)->>Local Proxy: Call Ollama API
+    Local Proxy->>Runpod: Forwards Ollama API call
+    Runpod->>Ollama: Forwards Ollama API call
+    loop Check every second
+        Local Proxy --> Runpod: Check request status
+    end
+    Ollama-->>Runpod: Ollama responds
+    Runpod-->>Local Proxy: Forwards Ollama response
+    Local Proxy-->>Client (e.g. litellm): Receives Ollama response
+```
+
+### Ollama
+
+## Blog
 
 Check the blog [here](https://medium.com/@pooya.haratian/running-ollama-with-runpod-serverless-and-langchain-6657763f400d)
 
