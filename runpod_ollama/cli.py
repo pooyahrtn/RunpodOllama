@@ -68,10 +68,10 @@ def create_endpoint(
             flashboot=True,
         )
         pod_url = _get_pod_url(response["id"])
-        print(f"Created endpoint: {pod_url}")
+
         print(response)
         print("[bold blue]You must manually update the gpu type.[/bold blue]")
-        print(f"Enpoint URL: ")
+        print(f"URL: {pod_url}")
         return response
     except Exception as e:
         err_console.print("Failed to create endpoint.")
