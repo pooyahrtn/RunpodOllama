@@ -17,6 +17,7 @@ requests = "^2.31.0"
 python-dotenv = "^1.0.0"
 litellm = { extras = ["proxy"], version = "^1.20.2" }
 types-requests = "^2.31.0.20240125"
+typer = "^0.9.0"
 
 
 [tool.poetry.group.examples.dependencies]
@@ -30,3 +31,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 local_proxy = 'runpod_ollama:run_local_proxy'
+runpod-ollama = 'runpod_ollama:run_cli'
