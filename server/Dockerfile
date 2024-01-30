@@ -1,5 +1,5 @@
 # Use an official base image with your desired version
-FROM ollama/ollama:latest
+FROM ollama/ollama:0.1.22
 
 ENV PYTHONUNBUFFERED=1 
 
@@ -14,7 +14,7 @@ RUN apt-get update --yes --quiet && DEBIAN_FRONTEND=noninteractive apt-get insta
 
 RUN apt-get install --reinstall ca-certificates
 
-# PYTHON 3.10
+# PYTHON 3.11
 RUN add-apt-repository --yes ppa:deadsnakes/ppa && apt update --yes --quiet
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes --quiet --no-install-recommends \

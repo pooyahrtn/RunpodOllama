@@ -7,7 +7,8 @@ ollama serve 2>&1 | tee ollama.server.log &
 
 check_server_is_running() {
     # Replace "Listening" with the actual expected output
-    if tail -n 1 ollama.server.log | grep -q "Listening"; then
+    echo "Checking if server is running..."
+    if cat ollama.server.log | grep -q "Listening"; then
         return 0 # Success
     else
         return 1 # Failure
@@ -16,7 +17,7 @@ check_server_is_running() {
 
 # Wait for the process to print "Listening"
 while ! check_server_is_running; do
-    sleep 1
+    sleep 5
 done
 
 ollama pull $1
