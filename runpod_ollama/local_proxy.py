@@ -5,6 +5,7 @@ The API mimicks Ollama's API, but adds a pod_id parameter to the route.
 """
 
 
+from typing import Optional
 from flask import Flask, request
 from runpod_ollama import ENVIRONMENT
 from runpod_ollama.runpod_repository import RunpodRepository
@@ -26,5 +27,8 @@ def endpoint(pod_id: str, endpoint: str):
     return response
 
 
-def run_local_proxy(port: int = 5000):
-    app.run(debug=True, port=port)
+def run_local_proxy(
+    port: int = 5000,
+    debug: Optional[bool] = None,
+):
+    app.run(debug=debug, port=port)
