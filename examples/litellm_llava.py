@@ -11,14 +11,12 @@ $ runpod-ollama start-proxy
 import litellm
 
 response = litellm.completion(
-    "ollama/runpod",
+    "ollama/llava:13 -fb",
     messages=[
         {"content": "why the sky is blue?"},
     ],
-    base_url="http://127.0.0.1:5000/nla971fm35t2ck",
+    base_url="http://127.0.0.1:5001/c0sdkxrikssgag",
     stream=False,
 )
-
-llm = litellm.LiteLLM()
 
 print(response.choices[0].message["content"])  # type: ignore
