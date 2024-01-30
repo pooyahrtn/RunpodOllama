@@ -9,7 +9,12 @@ class RunpodRepository:
         self.pod_id = pod_id
         self.active_request_id: Optional[str] = None
 
-    def call_endpoint(self, endpoint: str, input: Any) -> Mapping[str, Any]:
+    def call_endpoint(
+        self,
+        endpoint: str,
+        input: Any,
+        sleep_interval: int = 2,
+    ) -> Mapping[str, Any]:
         headers = self._request_headers()
         input = {
             "method_name": endpoint,
@@ -31,7 +36,7 @@ class RunpodRepository:
                 f"{self._request_base_url()}/status/{self.active_request_id}",
                 headers=headers,
             ).json()
-            time.sleep(1)
+            time.sleep(sleep_interval)
 
         return out["output"]
 
