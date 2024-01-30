@@ -97,7 +97,7 @@ def create_model(
     return endpoint
 
 
-def _code_example(pod_id: str, port: int, model: str):
+def _code_example(pod_id: str, model: str):
     return """
 ```
 import litellm
@@ -107,7 +107,7 @@ response = litellm.completion(
     messages=[
         {{"content": "why the sky is blue?"}},
     ],
-    base_url="http://127.0.0.1:{port}/{pod_id}",
+    base_url="http://127.0.0.1:5000/{pod_id}",
     stream=False,
 )
 
@@ -115,14 +115,13 @@ print(response.choices[0].message["content"])
 ```
     """.format(
         pod_id=pod_id,
-        port=port,
         model=model,
     )
 
 
 @app.command()
-def start_proxy(debug: Optional[bool] = None):
-    """Starts a local proxy to forward requests to the Runpod Ollama service."""
+def example():
+    """Prints an example of how to use the local proxy."""
     endpoints = runpod.get_endpoints()
     endpoint_prompt = inquirer.prompt(
         [
@@ -139,18 +138,24 @@ def start_proxy(debug: Optional[bool] = None):
         [endpoint["name"] for endpoint in endpoints].index(endpoint_name)
     ]["id"]
 
-    local_proxy_port = 5000
-    while not is_port_free(local_proxy_port):
-        local_proxy_port += 1
-
     print(_get_pod_url(endpoint_id))
     print(
         _code_example(
             pod_id=endpoint_id,
-            port=local_proxy_port,
             model=endpoint_name,
         )
     )
+
+
+@app.command()
+def start_proxy(debug: Optional[bool] = None):
+    """Starts a local proxy to forward requests to the Runpod Ollama service."""
+    print(
+        "[bold green]Run `runpod-ollama example` to see how to use the proxy.[/bold green]"
+    )
+    local_proxy_port = 5000
+    while is_port_free(local_proxy_port):
+        local_proxy_port += 1
     print(f"Starting local proxy on port {local_proxy_port}")
     run_local_proxy(port=local_proxy_port, debug=debug)
 
