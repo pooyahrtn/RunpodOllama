@@ -63,7 +63,7 @@ print(response.choices[0].message["content"])
 
 ## How it works
 
-````mermaid
+```mermaid
 sequenceDiagram
     box Client
     participant Client (e.g. litellm)
@@ -84,13 +84,13 @@ sequenceDiagram
     Runpod-->>Local Proxy: Forwards Ollama response
     Local Proxy-->>Client (e.g. litellm): Receives Ollama response
 
-```-->
+```
 
 ### 1. Ollama
 
 You can communicate with Ollama through the rest API. The API is documented [here](https://github.com/ollama/ollama/blob/main/docs/api.md)
 
-````
+```
 
 curl http://localhost:11434/api/generate -d '{
 "model": "llama2",
@@ -98,7 +98,7 @@ curl http://localhost:11434/api/generate -d '{
 "stream": false
 }'
 
-````
+```
 
 Responds:
 
@@ -116,7 +116,7 @@ Responds:
   "eval_count": 290,
   "eval_duration": 4709213000
 }
-````
+```
 
 ### 2. Runpod
 
