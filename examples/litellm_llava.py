@@ -1,9 +1,10 @@
 """Example of using litellm to run a pod on a local server.
 
 1. Run poetry install --all-extras
-2. Run the local server to forward requests to runpod:
+2. Run the local-proxy with
+
 ```
-$ poetry run local_proxy
+$ runpod-ollama start-proxy
 ```
 """
 
@@ -17,5 +18,7 @@ response = litellm.completion(
     base_url="http://127.0.0.1:5000/nla971fm35t2ck",
     stream=False,
 )
+
+llm = litellm.LiteLLM()
 
 print(response.choices[0].message["content"])  # type: ignore

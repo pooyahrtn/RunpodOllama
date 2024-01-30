@@ -97,13 +97,13 @@ def create_model(
     return endpoint
 
 
-def _code_example(pod_id: str, port: int):
+def _code_example(pod_id: str, port: int, model: str):
     return """
 ```
 import litellm
 
 response = litellm.completion(
-    "ollama/runpod",
+    "ollama/{model}",
     messages=[
         {{"content": "why the sky is blue?"}},
     ],
@@ -116,6 +116,7 @@ print(response.choices[0].message["content"])
     """.format(
         pod_id=pod_id,
         port=port,
+        model=model,
     )
 
 
@@ -134,14 +135,22 @@ def start_proxy(debug: Optional[bool] = None):
     )
     assert endpoint_prompt is not None
     endpoint_name: str = endpoint_prompt["endpoint"]
-    endpoint_id = endpoints[[e["name"] for e in endpoints].index(endpoint_name)]["id"]
+    endpoint_id = endpoints[
+        [endpoint["name"] for endpoint in endpoints].index(endpoint_name)
+    ]["id"]
 
     local_proxy_port = 5000
     while not is_port_free(local_proxy_port):
         local_proxy_port += 1
 
     print(_get_pod_url(endpoint_id))
-    print(_code_example(pod_id=endpoint_id, port=local_proxy_port))
+    print(
+        _code_example(
+            pod_id=endpoint_id,
+            port=local_proxy_port,
+            model=endpoint_name,
+        )
+    )
     print(f"Starting local proxy on port {local_proxy_port}")
     run_local_proxy(port=local_proxy_port, debug=debug)
 
