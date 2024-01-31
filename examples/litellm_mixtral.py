@@ -15,7 +15,7 @@ response = litellm.completion(
     messages=[
         {"content": "why the sky is blue?"},
     ],
-    base_url="http://127.0.0.1:5001/mpsuuw648lsi2z",
+    base_url="http://127.0.0.1:5000/mpsuuw648lsi2z",
     stream=False,
 )
 
