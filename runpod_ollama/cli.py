@@ -154,7 +154,7 @@ def start_proxy(debug: Optional[bool] = None):
         "[bold green]Run `runpod-ollama example` to see how to use the proxy.[/bold green]"
     )
     local_proxy_port = 5000
-    while is_port_free(local_proxy_port):
+    while not is_port_free(local_proxy_port):
         local_proxy_port += 1
     print(f"Starting local proxy on port {local_proxy_port}")
     run_local_proxy(port=local_proxy_port, debug=debug)
