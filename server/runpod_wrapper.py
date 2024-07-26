@@ -1,5 +1,5 @@
 import runpod
-from typing import Any, Literal, TypedDict
+from typing import Any, TypedDict
 import requests
 import sys
 
@@ -7,7 +7,7 @@ import sys
 class HandlerInput(TypedDict):
     """The data for calling the Ollama service."""
 
-    method_name: Literal["generate"]
+    method_name: str
     """The url endpoint of the Ollama service to make a post request to."""
 
     input: Any
@@ -29,7 +29,7 @@ def handler(job: HandlerJob):
     input["input"]["model"] = model
 
     response = requests.post(
-        url=f"{base_url}/api/{input['method_name']}/",
+        url=f"{base_url}/{input['method_name']}",
         headers={"Content-Type": "application/json"},
         json=input["input"],
     )
