@@ -28,7 +28,7 @@ def create_template(model: str, disk_size: int):
     try:
         response = runpod.create_template(
             name=model,
-            image_name="pooyaharatian/runpod-ollama:0.0.8",
+            image_name="pooyaharatian/runpod-ollama:0.0.9",
             docker_start_cmd=model,
             is_serverless=True,
             container_disk_in_gb=disk_size,
@@ -68,9 +68,11 @@ def create_endpoint(
             flashboot=True,
         )
         pod_url = _get_pod_url(response["id"])
-
+        print("Created endpoint:")
         print(response)
-        print("[bold blue]You must manually update the gpu type.[/bold blue]")
+        print(
+            "[bold red]You must manually update the gpu type from 'Edit Endpoint'.[/bold red]"
+        )
         print(f"URL: {pod_url}")
         return response
     except Exception as e:
