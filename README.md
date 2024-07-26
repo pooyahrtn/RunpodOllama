@@ -44,22 +44,65 @@ Once the endpoint is created you can run `runpod-ollama start-proxy`:
    mistral-fb
 ```
 
-This will start the local proxy, and outputs an example to use the endpoint:
+This will start the local proxy, and outputs an example to use the endpoint. You can use [OpenAI compatible API](https://ollama.com/blog/openai-compatibility):
+
+### cURL
+
+```shell
+curl http://127.0.0.1:5001/<endpoint-id>/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "llama2",
+        "messages": [
+            {
+                "role": "system",
+                "content": "You are a helpful assistant."
+            },
+            {
+                "role": "user",
+                "content": "Hello!"
+            }
+        ]
+    }'
+```
+
+### OpenAI sdk
 
 ```python
-import litellm
+from openai import OpenAI
 
-response = litellm.completion(
-    "ollama/phi-fb",
-    messages=[
-        {"content": "why the sky is blue?"},
-    ],
-    base_url="http://127.0.0.1:5001/dtaybcvyltprsx",
-    stream=False,
+client = OpenAI(
+    base_url = 'http://127.0.0.1:5001/<endpoint-id>/v1',
+    api_key='ollama', # required, but unused
 )
 
-print(response.choices[0].message["content"])
+response = client.chat.completions.create(
+  model="llama2",
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant"}
+  ]
+)
 ```
+
+## Blog
+
+Check the blog [here](https://medium.com/@pooya.haratian/running-ollama-with-runpod-serverless-and-langchain-6657763f400d)
+
+# Examples
+
+To run the examples, first install the examples dependencies:
+
+```
+$ poetry install --all-extras
+```
+
+# Limitations
+
+- Currently stream option is not enabled
+- Error messages are not readable. In case you encountered error, make sure:
+  - The local proxy is running
+  - The model name you provided is right
+- The docker image should be updated. Some models are not working with this version of the Ollama.
 
 ## How it works
 
@@ -145,23 +188,3 @@ and waits until they are resolved.
 ### 4. Client
 
 With the Local Proxy running, you can call the change the Ollama base-url to the local-proxy server, and interact with the Ollama on the server.
-
-## Blog
-
-Check the blog [here](https://medium.com/@pooya.haratian/running-ollama-with-runpod-serverless-and-langchain-6657763f400d)
-
-# Examples
-
-To run the examples, first install the examples dependencies:
-
-```
-$ poetry install --all-extras
-```
-
-# Limitations
-
-- Currently stream option is not enabled
-- Error messages are not readable. In case you encountered error, make sure:
-  - The local proxy is running
-  - The model name you provided is right
-- The docker image should be updated. Some models are not working with this version of the Ollama.
