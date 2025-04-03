@@ -1,3 +1,6 @@
 [virtualenvs]
 in-project = true
 create = true
+
+[installer]
+no-binary = ["multidict", "aiohttp"]

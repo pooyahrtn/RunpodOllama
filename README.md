@@ -1,11 +1,145 @@
+# RunPod Ollama Integration
+
+This project provides a simple way to interact with Ollama models through RunPod's serverless infrastructure.
+
+## Setup
+
+1. Deploy the server code to RunPod
+2. Get your RunPod endpoint ID and API key
+3. Set up environment variables or pass them directly to the client
+
+## Server Configuration
+
+The server code automatically connects to your Ollama instance. You can configure it with these environment variables:
+
+- `OLLAMA_BASE_URL`: URL of your Ollama instance (default: http://0.0.0.0:11434)
+- `RUNPOD_API_KEY`: Optional API key for authentication
+
+## Client Usage
+
+### Using the Command Line
+
+```bash
+# Set environment variables (recommended)
+export RUNPOD_API_KEY="your_api_key"
+export RUNPOD_ENDPOINT_ID="your_endpoint_id"
+
+# Run the client with a prompt
+python client.py --prompt "What is the capital of France?"
+
+# Optionally specify a model
+python client.py --prompt "What is the capital of France?" --model "llama2"
+
+# Or provide API key and endpoint ID directly
+python client.py --prompt "What is the capital of France?" --api-key "your_api_key" --endpoint-id "your_endpoint_id"
+```
+
+### Using the Python API
+
+```python
+from client import call_runpod_api
+
+# Simple usage with environment variables set
+response = call_runpod_api(prompt="What is the capital of France?")
+
+# Or specify all parameters
+response = call_runpod_api(
+    prompt="What is the capital of France?",
+    model="llama2",
+    api_key="your_api_key",
+    endpoint_id="your_endpoint_id"
+)
+
+print(response)
+```
+
+## API Format
+
+The API expects requests in this format:
+
+```json
+{
+  "input": {
+    "method_name": "generate",
+    "input": {
+      "prompt": "Your prompt here",
+      "model": "Optional model name"
+    }
+  }
+}
+```
+
+Response will be in Ollama's standard format.
+
 # Running Ollama with Runpod Serverless
 
 ## How to use it
 
 1. Clone the repo
-2. Run `poetry install --all-extras`
-3. You can interact with app through the cli: `runpod-ollama`
+2. Choose one of the installation methods below (binary installation recommended for Python 3.12)
+3. You can interact with the app through the CLI
 4. Create a `.env` file and add your Runpod's API_KEY there `RUNPOD_API_TOKEN=...`
+
+### Installation Options
+
+#### Option 1: Binary Installation (Recommended for Python 3.12)
+
+For the simplest installation that avoids compilation issues, especially on Python 3.12:
+
+1. Clone the repo
+2. Run the binary installation script: `./install_binary.sh`
+3. This script will create a virtual environment and install pre-built binaries
+4. Activate the environment: `source .venv/bin/activate`
+5. Create a `.env` file and add your Runpod's API_KEY: `RUNPOD_API_TOKEN=...`
+6. Run the CLI: `python run_cli.py --help` or `python -m runpod_ollama --help`
+
+This method installs all dependencies using binary packages instead of compiling from source, which is more reliable on Python 3.12.
+
+#### Option 2: Poetry Installation
+
+If you prefer using Poetry (Note: may have compilation issues on Python 3.12):
+
+1. Clone the repo
+2. Run the poetry setup script: `./install_poetry.sh`
+3. This will install Poetry if needed and set up the project
+4. Create a `.env` file and add your Runpod's API_KEY there `RUNPOD_API_TOKEN=...`
+5. You can interact with the app through the CLI: `poetry run runpod-ollama`
+
+#### Option 3: Manual Pip Installation
+
+If you prefer a more traditional approach:
+
+1. Clone the repo
+2. Run the setup script: `./setup.sh`
+3. Activate the virtual environment: `source venv/bin/activate`
+4. Create a `.env` file and add your Runpod's API_KEY there `RUNPOD_API_TOKEN=...`
+5. You can interact with app through either:
+   - Directly run the CLI script: `python run_cli.py`
+   - Use the module: `python -m runpod_ollama`
+
+### Troubleshooting Installation
+
+#### Python 3.12 Compatibility Issues
+
+If you encounter installation issues with Python 3.12, try one of these approaches:
+
+1. **Use the binary installation (recommended)**: `./install_binary.sh`
+   This script installs pre-built binary packages that are compatible with Python 3.12.
+
+2. **Use our Python-based installer**: `python fix_poetry_install.py`
+   This script will:
+   - Install Poetry if needed
+   - Pre-install problematic packages using binary versions
+   - Configure Poetry properly for Python 3.12
+   - Run the Poetry installation
+
+#### Test Mode
+
+For testing or development purposes, you can run the application in test mode without a real RunPod API token:
+
+1. Just run the application without setting the `RUNPOD_API_TOKEN` environment variable.
+2. The application will use a dummy test token that allows you to explore the CLI interface.
+3. Note that in test mode, actual API calls to RunPod will fail, but you can see the available commands.
 
 ### Commands
 
